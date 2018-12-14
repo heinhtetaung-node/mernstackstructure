@@ -1,5 +1,5 @@
 import axioApi from './../../config/axioconfig';
-export function getPosts () {
+export function getUsers () {
     return (dispatch) => {
         axioApi.get('users').then((res) => {
             let users = res.data
