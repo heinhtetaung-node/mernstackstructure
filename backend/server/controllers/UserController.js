@@ -7,12 +7,11 @@ class UserController {
 		this.userrepo = new UserRepository();    
 	}	
 
-	getAllUsers(req, res, next){
-  		console.log(this);
-  		const users = this.userrepo.getAll();
+	async getAllUsers(req, res, next){
+  		const users = await this.userrepo.getAll();
   		res.send(users);
 	}
-	
+
 	getUser(req, res, next){
 		const userid = req.params.id;
 		res.send({id : userid});
