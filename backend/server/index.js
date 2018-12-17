@@ -35,11 +35,11 @@ let port = 5000 || process.env.PORT   // this is our server port, now can run as
 routes(router) 	// we can use route by like this
 
 // later do
-// const corsOptions = {
-// 	origin: ['http://localhost:3000', 'https://mern-stack-course-react.herokuapp.com'],
-// 	credentials:true,
-// }
-// app.use(cors(corsOptions))
+const corsOptions = {
+	origin: ['http://localhost:3000', 'https://mern-stack-course-react.herokuapp.com'],
+	credentials:true,
+}
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json())
 
