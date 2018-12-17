@@ -1,0 +1,15 @@
+// Override default variables before the import
+$body-bg: #f7f7f7;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+// my css
+.borderbottom {
+    border-bottom: 1px solid #dddddd;
+}
+
+.navback{
+    background: #f2f2e6;
+}
