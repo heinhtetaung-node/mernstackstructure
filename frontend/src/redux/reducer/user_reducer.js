@@ -4,11 +4,11 @@ const initialState = {
 export default (state=initialState, action) => {
     switch (action.type) {
         case 'VIEW_USERS' :
-          return {
-              ...state,
-              users: action.users
-          }
+            return {
+                ...state,
+                users: action.users
+            }
         default:
-          return state
+            return state
     }
 } 
