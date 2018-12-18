@@ -5,7 +5,7 @@ import {Switch,Route,BrowserRouter, Link} from 'react-router-dom';
 import Home from './views/Home.js';
 import Register from './views/Register.js';
 import './scss/custom.scss'; 
-
+/*eslint-disable */
 class App extends Component {
   render() {
     return (

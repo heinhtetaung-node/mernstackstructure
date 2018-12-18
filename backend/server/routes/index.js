@@ -5,6 +5,7 @@ const user = require('./user')
 
 module.exports = (router) => {
     user(router)
+    
     // post(router)
     // auth(router)
     // tag(router)
