@@ -26,4 +26,8 @@ module.exports = (router) => {
         usercontroller.getAllUsers(...args)
     });
 
+    router.route('/users/save').post((...args) => {
+        usercontroller.saveUser(...args)
+    });
+
 }

@@ -11,22 +11,26 @@ class UserRepository extends BaseRepo{   // if more than extends 2 clase use HOC
 		let retresult = {};
 		try{
 			const datas = await User.findAll();
-			console.log(datas);
-			retresult = { result : true, datas : datas };
+			retresult = this.successResponse({datas : datas})
 		}catch(err){
-			console.log(err);
-			retresult = { result : false, datas : [], message : 'something wrong' };
+			retresult = this.failResponse({message : 'something wrong in db save'})
 		}
 		return retresult;
 	}
-	create(){
-		User.create({  
-		  name: 'hha',
-		  email: 'hha@gmail.com',
-		  password: 'ei'
-		}).then(customer => {		
-			// async return later
-		});
+	async create(user){
+		console.log(user.username);
+		let retresult = {};
+		try{
+			const res = await User.create({  
+				username: user.username,
+				email: user.email,
+				password: user.password
+			});
+			retresult = this.successResponse();
+		}catch(err){
+			retresult = this.failResponse();
+		}
+		return retresult;
 	}	
 }
 

@@ -4,7 +4,7 @@ import './App.css';
 import {Switch,Route,BrowserRouter, Link} from 'react-router-dom';
 import Home from './views/Home.js';
 import Register from './views/Register.js';
-import './scss/bootstrapcustom.scss'; 
+import './scss/custom.scss'; 
 
 class App extends Component {
   render() {
