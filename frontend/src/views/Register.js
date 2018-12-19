@@ -37,16 +37,16 @@ class Register extends Component {
       <div className="container">
         <form onSubmit={(e) => this.register(e)}>
           <div className="form-group">
-            <label for="exampleInputEmail1">Username</label>
+            <label >Username</label>
             <input type="text" className="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Full Name" />
           </div>
           <div className="form-group">
-            <label for="exampleInputEmail1">Email address</label>
+            <label >Email address</label>
             <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" />
             {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
           </div>
           <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label >Password</label>
             <input type="password" className="form-control" id="password" placeholder="Password" />
           </div>
           {/* <div className="form-check">

@@ -32,6 +32,16 @@ class UserRepository extends BaseRepo{   // if more than extends 2 clase use HOC
 		}
 		return retresult;
 	}	
+	async getUserByEmail(email){
+		let retresult = {};
+		try{
+			const datas = await User.findAll({ where: { email: email } })
+			retresult = this.successResponse({datas : datas});
+		}catch(err){
+			retresult = this.failResponse({message : 'something wrong in db save'})
+		}
+		return retresult;
+	}	
 }
 
 module.exports = UserRepository;

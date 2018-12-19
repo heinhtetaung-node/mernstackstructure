@@ -24,7 +24,7 @@ class UserController {
 		}
 		const saveuser = req.body.data;	
 		const result = await this.userrepo.create(saveuser);	
-		res.send(result);
+		return res.send(result);
 	}
 }
 

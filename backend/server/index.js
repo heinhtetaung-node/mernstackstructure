@@ -7,6 +7,7 @@ const routes = require('./routes/')
 
 const app = express() 
 const router = express.Router()   
+const expressValidator = require('express-validator');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -44,6 +45,8 @@ app.use(cors(corsOptions))
 app.use(bodyParser.json())
 
 app.use(bodyParser.urlencoded())
+
+app.use(expressValidator());
 
 app.use('/api', router)  // this is declare of routes by premix api...
 
