@@ -1,8 +1,9 @@
 const env = {
   database: 'mernstackstructure',
   username: 'root',
-  password: 'root',
+  password: '',
   host: 'localhost',
+  port: '3306',
   dialect: 'mysql',
   pool: {
 	  max: 5,

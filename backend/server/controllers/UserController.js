@@ -26,6 +26,10 @@ class UserController {
 		const result = await this.userrepo.create(saveuser);	
 		return res.send(result);
 	}
+
+	login(req, res, next){
+		return res.send({});
+	}
 }
 
 module.exports = UserController;

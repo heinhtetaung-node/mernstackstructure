@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { saveUser } from './../redux/actions/useractions';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+
 /*eslint-disable */
 const mapStateToProps = state => {
   return{
@@ -25,8 +27,8 @@ class Register extends Component {
     if(returndata.data.result == true){
       alert("Registered! please login");
     }else if(returndata.data.result == false){
-      alert("validation error");
       console.log(returndata.data);
+      alert("validation error \n" + JSON.stringify(returndata.data));
     }else{
       alert("something error"); 
       console.log(returndata);
@@ -55,7 +57,9 @@ class Register extends Component {
           </div> */}
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
-
+        <br/>
+        Already have and account? <Link to='/login'>Please Login here</Link>.
+        <br/>
       </div>      
     );
   }

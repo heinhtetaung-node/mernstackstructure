@@ -43,6 +43,19 @@ module.exports = {
         //     return res.send(errors);            
         // }
         // next();
+    },
+
+    validateLogin : (req, res, next) => {
+        req.checkBody('email', 'required').exists().not().isEmpty(); 
+        req.checkBody('password', 'required').exists().not().isEmpty(); 
+        if(req.body.email && req.body.email!=""){
+            req.checkBody('email', 'not email').isEmail();   
+        }      
+        var errors = req.validationErrors();
+        if (errors) {
+            return res.send({result : false, validateerr : errors});            
+        }
+        next();
     }
 }
 

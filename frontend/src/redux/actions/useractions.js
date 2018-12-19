@@ -16,6 +16,7 @@ export function getUsers () {
  * Api to save user
  * /users/save 
  * @param { data : {..userinfo} }
+ * functiontype : async
  */
 export function saveUser(user){
     return async() => {
@@ -23,8 +24,25 @@ export function saveUser(user){
         try{
             res = await axioApi.post('users/save', {data : user});
         }catch(e){
+            alert("Someting wrong in api calling");
+            console.log(e);
             res = e;
         }
         return res;
     }
+}
+
+/*
+ * Api for login
+ * /users/login
+ * @param { email : ..., password : ... }
+ * functiontype : callback
+ */
+export function loginUser(data, callback){
+    return axioApi.post('users/login', data).then((response) => {
+        callback(response.data);
+    }).catch((error) => {
+        alert("something wrong in api calling");
+        console.log(error);  
+    });
 }
