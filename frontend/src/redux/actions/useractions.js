@@ -39,10 +39,54 @@ export function saveUser(user){
  * functiontype : callback
  */
 export function loginUser(data, callback){
-    return axioApi.post('users/login', data).then((response) => {
-        callback(response.data);
-    }).catch((error) => {
-        alert("something wrong in api calling");
-        console.log(error);  
+    return (dispatch) => {
+        axioApi.post('users/login', data).then((response) => {
+            if(response.data.result === true){
+                const authinfo = {token : response.data.token, user_id : response.data.user_id, username : response.data.username};
+                dispatch({type:'SAVE_USER_INFO', authinfo});
+                localStorage.setItem('userinfo', JSON.stringify(authinfo));
+            }
+            callback(response.data);                        
+        }).catch((error) => {
+            alert("something wrong in api calling 1s");
+            console.log(error);  
+        });
+    }
+}
+
+/*
+ * Logout user
+ * maybe api calling stuff in future like updating logout time 
+ * function type : callback
+ */
+export function logoutUser(callback){
+    return (dispatch) => {
+        localStorage.removeItem('userinfo');
+        const authinfo = null;
+        dispatch({type:'SAVE_USER_INFO', authinfo});
+        callback('Logout success'); // maybe api response need in future
+    }
+}
+
+
+/*
+ * Api for login
+ * /users/login
+ * @param { email : ..., password : ... }
+ * functiontype : promise
+ */
+export function loginUserPromise(data, callback){
+    return axioApi.post('users/login', data);
+}
+
+/*
+* testing custom promise function
+*/
+export function testCustomPromiseCheckEven(number){
+    return new Promise((resolve, reject) => {
+        if(number%2==0){
+            resolve({result:true, message:'Yes, it is even number'});
+        } 
+        reject({result:false, message:'No, it is not even number'});
     });
 }

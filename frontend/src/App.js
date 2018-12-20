@@ -6,10 +6,22 @@ import Home from './views/Home.js';
 import Register from './views/Register.js';
 import Login from './views/Login.js';
 import './scss/custom.scss'; 
+import 'bootstrap/dist/js/bootstrap.js';
+
+import { connect } from 'react-redux';
+import { logoutUser } from './redux/actions/useractions';
+
+/*eslint-disable */
+const mapStateToProps = state => {
+	return{
+		authinfo : state.auth_reducer.authinfo
+	}
+}
+
 /*eslint-disable */
 class App extends Component {
-  render() {
-    return (
+	render() {
+    	return (
 			<BrowserRouter>
 				<div>
 					<nav className="navbar sticky-top navbar-light bg-grey borderbottom navback">
@@ -20,8 +32,9 @@ class App extends Component {
 								<a className="p-2 text-dark" href="#">Articles</a>
 								<a className="p-2 text-dark" href="#">Jobs</a>
 								<a className="p-2 text-dark" href="#">Advertising</a>
-							</nav>		
-							<Link className="btn btn-outline-primary" to='/register'>Sign up</Link>
+							</nav>	
+							{/* calling stateless component in order to familar with stateless component  */}
+							<ShowSignupOrUserinfo logoutUser={this.props.logoutUser} authinfo={this.props.authinfo} />  {/* authinfo={this.props.authinfo} is passing props to stateless */}		
 						</div>
 					</nav>
 					<div className="container">													
@@ -39,8 +52,34 @@ class App extends Component {
 					</footer>
 				</div>
 			</BrowserRouter>
-    );
-  }
+    	);
+  	}
 }
 
-export default App;
+const ShowSignupOrUserinfo = (props) => {	
+	const logout = (para) => { // writing function with para in stateless comp awesome hah!
+		console.log(para); 
+		props.logoutUser((message) => {
+			alert(message);
+			window.location.reload();
+		});
+	};
+	let signuplink = <Link className="btn btn-outline-primary" to='/register'>Sign up</Link>;
+	if(props.authinfo != null){
+		signuplink = (
+			<div className="btn-group btn-sm">
+				<button type="button" className="btn btn-danger dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					{props.authinfo.username}
+				</button>
+				<div className="dropdown-menu">
+					{/* onClick={() => logout('a')} passing parameter to stateless function  */}
+					<a className="dropdown-item" onClick={() => logout('testing para')} href="#">Logout</a>
+				</div>
+			</div>
+		);
+	}						
+	return signuplink;
+};
+
+
+export default connect(mapStateToProps, {logoutUser})(App);

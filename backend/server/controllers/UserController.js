@@ -28,7 +28,13 @@ class UserController {
 	}
 
 	login(req, res, next){
-		return res.send({});
+		const email = req.body.email;
+		const password = req.body.password;
+		this.userrepo.loginAttempt(email, password).then((response)=>{
+			return res.send(response);
+		}).catch((response) => {
+			return res.send(response);
+		});
 	}
 }
 

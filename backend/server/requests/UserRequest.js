@@ -23,8 +23,7 @@ module.exports = {
             // if it is not db touch, no need async and await
             req.checkBody('data.email', 'email exist').custom(async (value) => {
                 var user = await userrepo.getUserByEmail(value);   
-                console.log(user.result);
-                if(user.datas.length > 0){
+                if(user.result == true){
                     throw new Error('email exist');
                 }        
                 return true;                

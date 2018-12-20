@@ -7,11 +7,8 @@ class BaseRepo {
 
 	successResponse(arr = {}){
 		const result = { result : true };
-		if(arr.datas){
-			result.datas = arr.datas;
-		}
-		if(arr.message){
-			result.message = arr.message;
+		for (var property in arr) {
+			result[property] = arr[property];
 		}
 		return result;
 	}

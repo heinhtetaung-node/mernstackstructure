@@ -26,6 +26,7 @@ class Register extends Component {
     }
     if(returndata.data.result == true){
       alert("Registered! please login");
+      this.props.history.push('/login')
     }else if(returndata.data.result == false){
       console.log(returndata.data);
       alert("validation error \n" + JSON.stringify(returndata.data));
