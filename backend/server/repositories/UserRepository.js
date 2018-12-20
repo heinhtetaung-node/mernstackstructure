@@ -45,7 +45,7 @@ class UserRepository extends BaseRepo{   // if more than extends 2 clase use HOC
 				retresult = this.failResponse({message : 'user not exist with this email'})
 			}
 		}catch(err){
-			retresult = this.failResponse({message : 'something wrong in db save'})
+			retresult = this.failResponse({message : 'something wrong in db get'})
 		}
 		return retresult;
 	}	

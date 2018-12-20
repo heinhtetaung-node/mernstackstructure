@@ -45,6 +45,7 @@ export function loginUser(data, callback){
                 const authinfo = {token : response.data.token, user_id : response.data.user_id, username : response.data.username};
                 dispatch({type:'SAVE_USER_INFO', authinfo});
                 localStorage.setItem('userinfo', JSON.stringify(authinfo));
+                axioApi.defaults.headers.common['x-access-token'] = authinfo.token;
             }
             callback(response.data);                        
         }).catch((error) => {

@@ -3,7 +3,7 @@ const UserController = require('./../controllers/UserController')
 const usercontroller = new UserController();
 const { body, check, oneOf, validationResult } = require('express-validator/check');
 const UserRequest = require('./../requests/UserRequest');
-
+const JwtAuthMiddleware = require('./../middlewares/JwtAuthMiddleware');
 module.exports = (router) => {
 
     /**
@@ -13,7 +13,8 @@ module.exports = (router) => {
         .route('/user/:id')
         .get(usercontroller.getUser)
 
-    router.route('/users').get((...args) => {
+    // protected middleware JwtAuthMiddleware
+    router.route('/users').get(JwtAuthMiddleware, (...args) => {
         usercontroller.getAllUsers(...args)
     });
 

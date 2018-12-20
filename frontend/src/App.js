@@ -56,6 +56,9 @@ class App extends Component {
   	}
 }
 
+/*
+ * stateless component
+ */
 const ShowSignupOrUserinfo = (props) => {	
 	const logout = (para) => { // writing function with para in stateless comp awesome hah!
 		console.log(para); 
