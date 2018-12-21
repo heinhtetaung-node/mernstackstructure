@@ -5,11 +5,14 @@ import {Switch,Route,BrowserRouter, Link} from 'react-router-dom';
 import Home from './views/Home.js';
 import Register from './views/Register.js';
 import Login from './views/Login.js';
+import Ask from './views/Ask.js';
 import './scss/custom.scss'; 
 import 'bootstrap/dist/js/bootstrap.js';
 
 import { connect } from 'react-redux';
 import { logoutUser } from './redux/actions/useractions';
+
+import AuthMiddleware from './middlewares/AuthMiddle';
 
 /*eslint-disable */
 const mapStateToProps = state => {
@@ -28,7 +31,8 @@ class App extends Component {
 						<div className="container">
 							<h4 className="my-0 mr-md-auto font-weight-normal"><Link to='/'>{'{}'} DevPlanet</Link></h4>
 							<nav className="my-2 my-md-0 mr-md-3">
-								<a className="p-2 text-dark" href="#">Questions</a>
+								{(this.props.authinfo!=null)? <Link className="p-2 text-dark" to='/ask'>Ask</Link> : ''}
+								<a className="p-2 text-dark" href="#">Questions</a>								
 								<a className="p-2 text-dark" href="#">Articles</a>
 								<a className="p-2 text-dark" href="#">Jobs</a>
 								<a className="p-2 text-dark" href="#">Advertising</a>
@@ -42,7 +46,8 @@ class App extends Component {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/register" component={Register} /> 
-							<Route path="/login" component={Login} />         
+							<Route path="/login" component={Login} />  
+							<Route path="/ask" component={AuthMiddleware(Ask)} />
 						</Switch>					
 						<br/>					
 					</div>

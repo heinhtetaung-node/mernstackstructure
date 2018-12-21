@@ -22,10 +22,6 @@ module.exports = (router) => {
         usercontroller.saveUser(...args); 
     });
 
-    router.route('/users/login').post(UserRequest.validateLogin, (...args) => { 
-        usercontroller.login(...args); 
-    });
-
     /*
      * latest version recommanded way of validation https://express-validator.github.io/docs/index.html
      */

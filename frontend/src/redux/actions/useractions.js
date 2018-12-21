@@ -40,7 +40,7 @@ export function saveUser(user){
  */
 export function loginUser(data, callback){
     return (dispatch) => {
-        axioApi.post('users/login', data).then((response) => {
+        axioApi.post('auth/login', data).then((response) => {
             if(response.data.result === true){
                 const authinfo = {token : response.data.token, user_id : response.data.user_id, username : response.data.username};
                 dispatch({type:'SAVE_USER_INFO', authinfo});
