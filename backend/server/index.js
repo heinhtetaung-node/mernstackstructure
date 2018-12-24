@@ -27,9 +27,9 @@ router.use(bodyParser.json());
 const db = require('./config/db.config.js');
   
 // force: true will drop the table if it already exists
-// db.sequelize.sync({force: true}).then(() => {
-//   console.log('Drop and Resync with { force: true }');
-// });
+db.sequelize.sync({force: true}).then(() => {
+  console.log('Drop and Resync with { force: true }');
+});
 
 let port = 5000 || process.env.PORT   // this is our server port, now can run as localhost:5000
 
