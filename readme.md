@@ -16,7 +16,7 @@ To run backend server
 - npm install nodemon -g
 - nodemon index.js (this will watch and run again when you something change in file, you dont need to run node index.js again and again whenver you changed something)
 ```
-- table will automatically created
+- In your database, tables will automatically created
 	- if you dont want to create tables again and again just comment this three lines in backend/server/index.js
 	```
 	db.sequelize.sync({force: true}).then(() => {
